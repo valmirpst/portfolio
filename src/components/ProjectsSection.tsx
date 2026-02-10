@@ -40,7 +40,7 @@ const projects: Project[] = [
       "NeonDB",
       "Prisma",
     ],
-    liveUrl: "barbearia-valmirpst.vercel.app",
+    liveUrl: "https://barbearia-valmirpst.vercel.app",
     repoUrl: "https://github.com/valmirpst/barbearia",
   },
   {
