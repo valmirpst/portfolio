@@ -13,26 +13,27 @@ interface Education {
 const educationItems: Education[] = [
   {
     title: "Análise e Desenvolvimento de Sistemas",
-    institution: "Universidade / Faculdade",
-    period: "2023 – Presente",
+    institution: "Centro Universitário Integrado",
+    period: "2026 – Presente",
     status: "em andamento",
   },
   {
-    title: "Bootcamp Desenvolvimento Web Full Stack",
-    institution: "Plataforma de Ensino",
-    period: "2023",
+    title: "Curso Técnico Integrado em Informática para a Internet",
+    institution:
+      "Ensino Médio - Universidade Tecnológica Federal do Paraná (UTFPR)",
+    period: "2022 - 2025",
     status: "concluído",
   },
   {
-    title: "React do Zero à Maestria",
+    title: "Login, Registration and Authentication with React & Next.js",
     institution: "Udemy / Plataforma de Cursos",
-    period: "2023",
+    period: "2024",
     status: "concluído",
   },
   {
     title: "JavaScript & TypeScript Completo",
     institution: "Udemy / Plataforma de Cursos",
-    period: "2022",
+    period: "2023",
     status: "concluído",
   },
 ];
