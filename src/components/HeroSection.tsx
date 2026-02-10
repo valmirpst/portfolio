@@ -15,14 +15,17 @@ const HeroSection = () => {
       id="hero"
       className="min-h-screen flex items-center relative overflow-hidden bg-background"
     >
-      {/* Background Grid Pattern - Static, no will-change needed */}
-      <div
-        className="absolute inset-0 z-0 opacity-[0.03] pointer-events-none"
-        style={{
-          backgroundImage: `radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)`,
-          backgroundSize: "40px 40px",
-        }}
-      />
+      {/* Background Grid Pattern - Pulsating and Animated */}
+      <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+        <div
+          className="absolute inset-0 opacity-[0.03] grid-animate"
+          style={{
+            backgroundImage: `radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)`,
+            backgroundSize: "40px 40px",
+          }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/50 to-background" />
+      </div>
 
       {/* Animated gradient orbs - Performance critical */}
       {!shouldReduceMotion && (

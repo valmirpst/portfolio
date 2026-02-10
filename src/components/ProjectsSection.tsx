@@ -112,11 +112,11 @@ const ProjectsSection = () => {
               {...hoverScale}
               style={{ willChange: "transform, opacity" }}
             >
-              <Card className="bg-card/40 backdrop-blur-sm border-white/5 transition-all duration-500 group h-full hover:border-primary/20 overflow-hidden relative">
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <Card className="project-glass-card group h-full overflow-hidden relative border-white/5">
+                <div className="absolute -inset-[1px] rounded-xl animate-border-gradient opacity-0 group-hover:opacity-5 transition-opacity" />
 
                 <CardHeader className="relative z-10">
-                  <CardTitle className="text-2xl font-bold text-foreground group-hover:text-primary transition-colors flex items-center justify-between">
+                  <CardTitle className="text-2xl font-bold text-foreground group-hover:text-primary transition-colors duration-300 flex items-center justify-between">
                     {project.title}
                     <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center scale-0 group-hover:scale-100 transition-transform duration-300">
                       <ExternalLink className="h-4 w-4 text-primary" />
@@ -162,7 +162,7 @@ const ProjectsSection = () => {
                         size="sm"
                         variant="outline"
                         asChild
-                        className="rounded-full px-6 h-9 text-xs font-semibold border-white/10 hover:bg-white/5 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0 delay-75"
+                        className="rounded-full px-6 h-9 text-xs font-semibold border-white/10 hover:bg-gray-800 hover:text-white opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0 delay-75"
                       >
                         <a
                           href={project.repoUrl}

@@ -106,7 +106,7 @@ const EducationSection = () => {
                 )}
               </motion.div>
 
-              <div className="bg-card/30 backdrop-blur-sm border border-white/5 p-6 rounded-2xl group-hover:border-primary/10 transition-colors duration-500 ml-2">
+              <div className="glass-card p-6 rounded-2xl ml-2">
                 <span className="text-xs text-primary/80 font-mono tracking-widest uppercase mb-2 block">
                   {item.period}
                 </span>

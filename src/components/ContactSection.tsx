@@ -72,7 +72,7 @@ const ContactSection = () => {
               className="glow rounded-full px-8 h-12 text-base font-semibold group transition-all hover:scale-105"
             >
               <a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer">
-                <Linkedin className="mr-2 h-5 w-5 transition-transform group-hover:-translate-y-0.5" />
+                <Linkedin className="mr-2 h-5 w-5 transition-transform group-hover:rotate-6 duration-300" />
                 LinkedIn
               </a>
             </Button>
@@ -81,10 +81,10 @@ const ContactSection = () => {
               variant="outline"
               size="lg"
               asChild
-              className="rounded-full px-8 h-12 text-base font-semibold border-white/10 hover:bg-white/5 transition-all hover:scale-105"
+              className="rounded-full px-8 h-12 text-base font-semibold border-white/10 hover:bg-gray-800 hover:text-white transition-all hover:scale-105 group"
             >
               <a href={GITHUB_URL} target="_blank" rel="noopener noreferrer">
-                <Github className="mr-2 h-5 w-5" />
+                <Github className="mr-2 h-5 w-5 transition-transform group-hover:rotate-6 duration-300" />
                 GitHub
               </a>
             </Button>
@@ -93,10 +93,10 @@ const ContactSection = () => {
               variant="outline"
               size="lg"
               asChild
-              className="rounded-full px-8 h-12 text-base font-semibold border-white/10 hover:bg-white/5 transition-all hover:scale-105"
+              className="rounded-full px-8 h-12 text-base font-semibold border-white/10 hover:bg-gray-800 hover:text-white transition-all hover:scale-105 group"
             >
               <a href={`mailto:${EMAIL}`}>
-                <Mail className="mr-2 h-5 w-5" />
+                <Mail className="mr-2 h-5 w-5 transition-transform group-hover:rotate-6 duration-300" />
                 Email
               </a>
             </Button>
