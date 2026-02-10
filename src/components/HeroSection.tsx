@@ -1,108 +1,143 @@
 import TextReveal from "@/components/TextReveal";
 import { Button } from "@/components/ui/button";
-import {
-  fadeUp,
-  floatAnimation,
-  scaleIn,
-  staggerContainer,
-} from "@/lib/animations";
+import { fadeUp, scaleIn, staggerContainer } from "@/lib/animations";
 import { motion } from "framer-motion";
 import { ChevronDown, Github, Linkedin } from "lucide-react";
 
-const LINKEDIN_URL = "#";
-const GITHUB_URL = "#";
+const LINKEDIN_URL = "https://www.linkedin.com/in/valmirpaivastachin/";
+const GITHUB_URL = "https://github.com/valmirpst";
 
 const HeroSection = () => {
   return (
     <section
       id="hero"
-      className="min-h-screen flex items-center relative overflow-hidden"
+      className="min-h-screen flex items-center relative overflow-hidden bg-background"
     >
-      {/* Animated gradient orb */}
-      <motion.div
-        className="absolute top-1/3 left-[60%] -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full pointer-events-none gradient-orb"
-        animate={{
-          scale: [1, 1.15, 1],
-          rotate: [0, 180, 360],
+      {/* Background Grid Pattern */}
+      <div
+        className="absolute inset-0 z-0 opacity-[0.03] pointer-events-none"
+        style={{
+          backgroundImage: `radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)`,
+          backgroundSize: "40px 40px",
         }}
-        transition={{ duration: 12, repeat: Infinity, ease: "linear" }}
       />
 
-      {/* Secondary orb */}
+      {/* Animated gradient orbs */}
       <motion.div
-        className="absolute bottom-1/5 right-1/4 w-[300px] h-[300px] rounded-full pointer-events-none gradient-orb-secondary"
+        className="absolute top-1/4 -right-20 w-[600px] h-[600px] rounded-full pointer-events-none gradient-orb opacity-60"
+        animate={{
+          scale: [1, 1.1, 1],
+          x: [0, 30, 0],
+          y: [0, -30, 0],
+        }}
+        transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
+      />
+
+      <motion.div
+        className="absolute -bottom-20 -left-20 w-[400px] h-[400px] rounded-full pointer-events-none gradient-orb-secondary opacity-40"
         animate={{
           scale: [1, 1.2, 1],
-          rotate: [360, 180, 0],
+          rotate: [0, 90, 0],
         }}
-        transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
+        transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
       />
 
       <div className="container mx-auto px-4 relative z-10">
         <motion.div
-          className="max-w-3xl"
+          className="max-w-4xl"
           variants={staggerContainer}
           initial="hidden"
           animate="visible"
         >
+          {/* Availability Badge */}
+          <motion.div
+            variants={fadeUp}
+            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-medium mb-6 backdrop-blur-sm"
+          >
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+            </span>
+            Disponível para novos projetos
+          </motion.div>
+
           <motion.p
             variants={fadeUp}
-            className="font-mono text-sm text-primary mb-4"
+            className="font-mono text-sm text-primary/80 mb-4 tracking-wider uppercase"
           >
             Olá, eu sou
           </motion.p>
 
-          <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold tracking-tight mb-4">
+          <h1 className="text-5xl sm:text-6xl md:text-8xl font-bold tracking-tighter mb-4 leading-[1.1]">
             <TextReveal
               text="Valmir Paiva Stachin"
               highlightText="Stachin"
-              delay={0.3}
+              delay={0.2}
             />
           </h1>
 
-          <h2 className="text-xl sm:text-2xl md:text-3xl font-light mb-6">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-medium mb-8 flex items-center gap-3">
+            <span className="text-muted-foreground/60 font-light">—</span>
             <TextReveal
-              text="Desenvolvedor Junior"
+              text="Full Stack Developer"
               className="text-muted-foreground"
-              delay={0.8}
+              delay={0.6}
             />
           </h2>
 
           <motion.p
             variants={fadeUp}
-            className="text-muted-foreground max-w-xl mb-8 leading-relaxed"
+            className="text-lg text-muted-foreground max-w-2xl mb-10 leading-relaxed font-light"
           >
-            Apaixonado por construir experiências digitais modernas e
-            performáticas. Focado em React, TypeScript e no ecossistema
-            JavaScript, buscando sempre entregar código limpo e soluções
-            criativas.
+            Transformando ideias complexas em interfaces elegantes e escaláveis.
+            Especializado em{" "}
+            <span className="text-foreground font-normal">
+              React, Node.js e .NET
+            </span>
+            , criando soluções de alto impacto que conectam tecnologia e
+            pessoas.
           </motion.p>
 
-          <motion.div variants={scaleIn} className="flex gap-4">
-            <Button asChild className="glow ">
+          <motion.div variants={scaleIn} className="flex flex-wrap gap-5">
+            <Button
+              asChild
+              size="lg"
+              className="glow h-12 px-8 rounded-full text-base font-semibold group transition-all hover:scale-105"
+            >
               <a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer">
-                <Linkedin className="mr-2 h-4 w-4" />
-                LinkedIn
+                <Linkedin className="mr-2 h-5 w-5 transition-transform group-hover:-translate-y-0.5" />
+                Conectar no LinkedIn
               </a>
             </Button>
-            <Button variant="outline" asChild>
+            <Button
+              variant="outline"
+              size="lg"
+              asChild
+              className="h-12 px-8 rounded-full text-base border-white/10 hover:bg-white/5 transition-all hover:scale-105"
+            >
               <a href={GITHUB_URL} target="_blank" rel="noopener noreferrer">
-                <Github className="mr-2 h-4 w-4" />
-                GitHub
+                <Github className="mr-2 h-5 w-5" />
+                Ver Github
               </a>
             </Button>
           </motion.div>
         </motion.div>
       </div>
 
+      {/* Scroll Indicator */}
       <motion.a
         href="#sobre"
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 text-muted-foreground hover:text-primary transition-colors"
-        variants={floatAnimation}
-        initial="hidden"
-        animate="visible"
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 group pointer-events-auto"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 2, duration: 1 }}
       >
-        <ChevronDown className="h-6 w-6" />
+        <motion.div
+          animate={{ y: [0, 8, 0] }}
+          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+        >
+          <ChevronDown className="h-5 w-5 text-muted-foreground group-hover:text-primary transition-colors" />
+        </motion.div>
       </motion.a>
     </section>
   );
