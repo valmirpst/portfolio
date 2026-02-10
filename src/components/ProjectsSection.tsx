@@ -27,35 +27,64 @@ interface Project {
 
 const projects: Project[] = [
   {
-    title: "E-commerce Dashboard",
+    title: "Sistema de Gestão para Barbearias",
     description:
-      "Painel administrativo para gerenciamento de produtos, pedidos e clientes com gráficos interativos e relatórios em tempo real.",
-    tech: ["React", "TypeScript", "Tailwind CSS", "Recharts"],
-    liveUrl: "#",
-    repoUrl: "#",
+      "Sistema completo de gestão para barbearias, permitindo que proprietários gerenciem seus estabelecimentos, serviços e agendamentos, enquanto clientes podem visualizar e agendar serviços de forma fácil e intuitiva.",
+    tech: [
+      "Next.js",
+      "TypeScript",
+      "Radix UI",
+      "Node.js",
+      "Fastify",
+      "PostgreSQL",
+      "NeonDB",
+      "Prisma",
+    ],
+    liveUrl: "barbearia-valmirpst.vercel.app",
+    repoUrl: "https://github.com/valmirpst/barbearia",
   },
   {
-    title: "Task Manager App",
+    title: "Projeto Integrador - Livraria Online",
     description:
-      "Aplicação de gerenciamento de tarefas com drag-and-drop, categorias, filtros avançados e persistência de dados local.",
-    tech: ["React", "JavaScript", "CSS Modules", "LocalStorage"],
-    repoUrl: "#",
+      "Projeto integrador full stack de uma livraria online, com autenticação e gerenciamento de estoque, desenvolvido no 4º ano do Curso Técnico Integrado em Informática da UTFPR.",
+    tech: [
+      "React",
+      "TypeScript",
+      "Next.js",
+      "Node.js",
+      "Express",
+      "PostgreSQL",
+    ],
+    repoUrl: "https://github.com/valmirpst/projeto-integrador",
   },
   {
-    title: "Weather Forecast",
+    title: "Painel Escolar - Projeto Desenvolvimento Web",
     description:
-      "App de previsão do tempo com busca por cidades, exibição de dados meteorológicos em cards responsivos e integração com API externa.",
-    tech: ["React", "TypeScript", "REST API", "Tailwind CSS"],
-    liveUrl: "#",
-    repoUrl: "#",
+      "Painel escolar para gerenciamento de alunos, notas e atividades, desenvolvido como projeto final do curso de Desenvolvimento Web, utilizando React, Next.js e Recharts para visualização de dados.",
+    tech: [
+      "React",
+      "Next.js",
+      "TypeScript",
+      "CSS Modules",
+      "Lucide Icons",
+      "Recharts",
+    ],
+    liveUrl: "https://dw-project-valmirpst.vercel.app",
+    repoUrl: "https://github.com/valmirpst/dw-project-front",
   },
   {
-    title: "Portfolio Pessoal",
+    title: "Portfolio Pessoal (Este Site)",
     description:
-      "Site portfolio responsivo e moderno com animações suaves, design system personalizado e otimizado para performance.",
-    tech: ["React", "TypeScript", "Tailwind CSS", "Vite"],
-    liveUrl: "#",
-    repoUrl: "#",
+      "Portfólio pessoal moderno e interativo para apresentação de projetos, habilidades e experiências, desenvolvido com apoio de agentes de IA para otimizar o design e o desenvolvimento.",
+    tech: [
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "Antigravity",
+      "Agente de IA",
+      "Framer Motion",
+    ],
+    repoUrl: "https://github.com/valmirpst/portfolio",
   },
 ];
 
@@ -112,27 +141,32 @@ const ProjectsSection = () => {
               {...hoverScale}
               style={{ willChange: "transform, opacity" }}
             >
-              <Card className="project-glass-card group h-full overflow-hidden relative border-white/5">
+              <Card className="project-glass-card group h-full flex flex-col overflow-hidden relative border-white/5">
                 <div className="absolute -inset-[1px] rounded-xl animate-border-gradient opacity-0 group-hover:opacity-5 transition-opacity" />
 
                 <CardHeader className="relative z-10">
                   <CardTitle className="text-2xl font-bold text-foreground group-hover:text-primary transition-colors duration-300 flex items-center justify-between">
                     {project.title}
-                    <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center scale-0 group-hover:scale-100 transition-transform duration-300">
+                    <a
+                      className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center scale-0 group-hover:scale-100 hover:bg-primary/20 transition-all duration-300 cursor-pointer"
+                      href={project.liveUrl || project.repoUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
                       <ExternalLink className="h-4 w-4 text-primary" />
-                    </div>
+                    </a>
                   </CardTitle>
                   <CardDescription className="text-muted-foreground leading-relaxed text-base font-light mt-2 text-balance">
                     {project.description}
                   </CardDescription>
                 </CardHeader>
-                <CardContent className="relative z-10">
+                <CardContent className="relative z-10 h-full flex flex-col justify-between">
                   <div className="flex flex-wrap gap-2 mb-8">
                     {project.tech.map((t) => (
                       <motion.div key={t} {...hoverScaleSmall}>
                         <Badge
                           variant="outline"
-                          className="text-[10px] font-mono border-white/10 text-muted-foreground hover:border-primary/50 hover:text-primary transition-all duration-300 bg-white/5"
+                          className="text-[10px] font-mono border-white/10 text-muted-foreground hover:border-primary/50 hover:text-primary transition-all duration-300 bg-white/5 cursor-default"
                         >
                           {t}
                         </Badge>
