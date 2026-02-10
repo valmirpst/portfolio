@@ -105,7 +105,7 @@ const HeroSection = () => {
               className="glow h-12 px-8 rounded-full text-base font-semibold group transition-all hover:scale-105"
             >
               <a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer">
-                <Linkedin className="mr-2 h-5 w-5 transition-transform group-hover:-translate-y-0.5" />
+                <Linkedin className="mr-2 h-5 w-5 transition-transform group-hover:rotate-6 duration-300" />
                 Conectar no LinkedIn
               </a>
             </Button>
@@ -113,10 +113,10 @@ const HeroSection = () => {
               variant="outline"
               size="lg"
               asChild
-              className="h-12 px-8 rounded-full text-base border-white/10 hover:bg-white/5 transition-all hover:scale-105"
+              className="h-12 px-8 rounded-full text-base border-white/10 hover:bg-gray-800 hover:text-white transition-all hover:scale-105 group"
             >
               <a href={GITHUB_URL} target="_blank" rel="noopener noreferrer">
-                <Github className="mr-2 h-5 w-5" />
+                <Github className="mr-2 h-5 w-5 transition-transform group-hover:rotate-12 duration-300" />
                 Ver Github
               </a>
             </Button>

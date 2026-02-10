@@ -1,6 +1,6 @@
-import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import { fadeDown, fadeUp, staggerContainerFast } from "@/lib/animations";
+import { AnimatePresence, motion } from "framer-motion";
+import { useEffect, useState } from "react";
 
 const navItems = [
   { label: "Início", href: "#hero" },
@@ -23,7 +23,9 @@ const Navbar = () => {
   return (
     <motion.nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? "bg-background/90 backdrop-blur-md border-b border-border" : "bg-transparent"
+        scrolled
+          ? "bg-background/90 backdrop-blur-md border-b border-border"
+          : "bg-transparent"
       }`}
       initial={{ y: -80 }}
       animate={{ y: 0 }}
@@ -36,7 +38,7 @@ const Navbar = () => {
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
-          {"<VP />"}
+          <img src="/logo.png" alt="Logo" width={32} height={32} />
         </motion.a>
 
         {/* Desktop */}
@@ -64,7 +66,14 @@ const Navbar = () => {
           className="md:hidden text-foreground p-2"
           aria-label="Menu"
         >
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="2">
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 20 20"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+          >
             {mobileOpen ? (
               <path d="M4 4l12 12M16 4L4 16" />
             ) : (
