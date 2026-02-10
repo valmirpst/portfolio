@@ -1,79 +1,144 @@
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
-import { Github, Linkedin, Mail } from "lucide-react";
+import { fadeUp, scaleIn, staggerContainer } from "@/lib/animations";
 import { motion } from "framer-motion";
-import { fadeUp, staggerContainer, scaleIn, hoverScale } from "@/lib/animations";
+import { Github, Linkedin, Mail } from "lucide-react";
 
-const LINKEDIN_URL = "#";
-const GITHUB_URL = "#";
-const EMAIL = "valmir@email.com";
+const LINKEDIN_URL = "https://www.linkedin.com/in/valmirpaivastachin/";
+const GITHUB_URL = "https://github.com/valmirpst";
+const EMAIL = "valmirpaivacpm@gmail.com";
 
 const ContactSection = () => {
   return (
     <motion.section
       id="contato"
-      className="section-spacing"
+      className="section-spacing relative overflow-hidden"
       variants={staggerContainer}
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.3 }}
     >
-      <div className="container mx-auto px-4 text-center">
-        <motion.h2 variants={fadeUp} className="text-3xl md:text-4xl font-bold mb-2">
-          Vamos <span className="text-gradient">Conversar</span>
-        </motion.h2>
-        <motion.div variants={fadeUp}>
-          <Separator className="w-16 bg-primary mb-8 mx-auto" />
-        </motion.div>
+      {/* Background Decor */}
+      <div
+        className="absolute inset-0 z-0 opacity-[0.02] pointer-events-none"
+        style={{
+          backgroundImage: `radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)`,
+          backgroundSize: "40px 40px",
+        }}
+      />
 
-        <motion.p variants={fadeUp} className="text-muted-foreground max-w-lg mx-auto mb-8 leading-relaxed">
-          Estou sempre aberto a novas oportunidades, colaborações e projetos interessantes.
-          Sinta-se à vontade para entrar em contato!
-        </motion.p>
+      <motion.div
+        className="absolute top-0 right-0 w-[400px] h-[400px] rounded-full pointer-events-none gradient-orb opacity-10"
+        animate={{
+          scale: [1, 1.2, 1],
+        }}
+        transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
+      />
 
-        <motion.div variants={scaleIn} className="flex flex-wrap justify-center gap-4">
-          <motion.div {...hoverScale}>
-            <Button asChild className="glow">
+      <div className="container mx-auto px-4 relative z-10">
+        <div className="max-w-4xl mx-auto text-center">
+          <motion.h2
+            variants={fadeUp}
+            className="text-4xl md:text-6xl font-bold mb-4 tracking-tighter"
+          >
+            Vamos <span className="text-gradient">Conversar</span>
+          </motion.h2>
+          <motion.div variants={fadeUp}>
+            <Separator className="w-16 bg-primary mb-12 mx-auto" />
+          </motion.div>
+
+          <motion.p
+            variants={fadeUp}
+            className="text-xl text-muted-foreground max-w-2xl mx-auto mb-12 leading-relaxed font-light"
+          >
+            Estou sempre aberto a novas oportunidades, colaborações e projetos
+            desafiadores. Sinta-se à vontade para entrar em contato através de
+            qualquer uma das plataformas abaixo!
+          </motion.p>
+
+          <motion.div
+            variants={scaleIn}
+            className="flex flex-wrap justify-center gap-6"
+          >
+            <Button
+              asChild
+              size="lg"
+              className="glow rounded-full px-8 h-12 text-base font-semibold group transition-all hover:scale-105"
+            >
               <a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer">
-                <Linkedin className="mr-2 h-4 w-4" />
+                <Linkedin className="mr-2 h-5 w-5 transition-transform group-hover:-translate-y-0.5" />
                 LinkedIn
               </a>
             </Button>
-          </motion.div>
-          <motion.div {...hoverScale}>
-            <Button variant="outline" asChild>
+
+            <Button
+              variant="outline"
+              size="lg"
+              asChild
+              className="rounded-full px-8 h-12 text-base font-semibold border-white/10 hover:bg-white/5 transition-all hover:scale-105"
+            >
               <a href={GITHUB_URL} target="_blank" rel="noopener noreferrer">
-                <Github className="mr-2 h-4 w-4" />
+                <Github className="mr-2 h-5 w-5" />
                 GitHub
               </a>
             </Button>
-          </motion.div>
-          <motion.div {...hoverScale}>
-            <Button variant="outline" asChild>
+
+            <Button
+              variant="outline"
+              size="lg"
+              asChild
+              className="rounded-full px-8 h-12 text-base font-semibold border-white/10 hover:bg-white/5 transition-all hover:scale-105"
+            >
               <a href={`mailto:${EMAIL}`}>
-                <Mail className="mr-2 h-4 w-4" />
+                <Mail className="mr-2 h-5 w-5" />
                 Email
               </a>
             </Button>
           </motion.div>
-        </motion.div>
+        </div>
       </div>
 
       {/* Footer */}
       <motion.div
-        className="container mx-auto px-4 mt-20 pt-8 border-t border-border"
+        className="container mx-auto px-4 mt-32 pt-12 border-t border-white/5 relative z-10"
         variants={fadeUp}
       >
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-muted-foreground">
-          <p className="font-mono text-xs">
-            © {new Date().getFullYear()} Valmir Paiva Stachin
-          </p>
-          <div className="flex items-center gap-4">
-            <motion.a whileHover={{ scale: 1.2, y: -2 }} href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
-              <Linkedin className="h-4 w-4" />
+        <div className="flex flex-col md:row items-center justify-between gap-6 text-sm text-muted-foreground pb-12">
+          <div className="text-center md:text-left">
+            <p className="font-mono text-[10px] text-center uppercase tracking-[0.2em] text-primary mb-2">
+              Developed with excellence
+            </p>
+            <p className="font-light">
+              © {new Date().getFullYear()} Valmir Paiva Stachin. All rights
+              reserved.
+            </p>
+          </div>
+
+          <div className="flex items-center gap-6">
+            <motion.a
+              whileHover={{ scale: 1.2, y: -2 }}
+              href={LINKEDIN_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-muted-foreground hover:text-primary transition-colors"
+            >
+              <Linkedin className="h-5 w-5" />
             </motion.a>
-            <motion.a whileHover={{ scale: 1.2, y: -2 }} href={GITHUB_URL} target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
-              <Github className="h-4 w-4" />
+            <motion.a
+              whileHover={{ scale: 1.2, y: -2 }}
+              href={GITHUB_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-muted-foreground hover:text-primary transition-colors"
+            >
+              <Github className="h-5 w-5" />
+            </motion.a>
+            <motion.a
+              whileHover={{ scale: 1.2, y: -2 }}
+              href={`mailto:${EMAIL}`}
+              className="text-muted-foreground hover:text-primary transition-colors"
+            >
+              <Mail className="h-5 w-5" />
             </motion.a>
           </div>
         </div>
