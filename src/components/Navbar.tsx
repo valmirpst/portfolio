@@ -7,7 +7,6 @@ import {
   useSpring,
 } from "framer-motion";
 import { useEffect, useState } from "react";
-import logo from "../assets/logo.svg";
 
 const navItems = [
   { label: "Início", href: "#hero" },
@@ -59,7 +58,12 @@ const Navbar = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <img src={logo} alt="Logo" width={32} height={32} />
+            <img
+              src={`${import.meta.env.BASE_URL}logo.png`}
+              alt="Logo"
+              width={32}
+              height={32}
+            />
           </motion.a>
 
           {/* Desktop */}
