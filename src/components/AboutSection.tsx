@@ -6,7 +6,7 @@ import {
   staggerContainer,
   staggerContainerFast,
 } from "@/lib/animations";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 
 const skills = [
   "React",
@@ -27,6 +27,8 @@ const skills = [
 ];
 
 const AboutSection = () => {
+  const shouldReduceMotion = useReducedMotion();
+
   return (
     <motion.section
       id="sobre"
@@ -45,13 +47,16 @@ const AboutSection = () => {
         }}
       />
 
-      <motion.div
-        className="absolute top-1/2 -left-20 w-[500px] h-[500px] rounded-full pointer-events-none gradient-orb opacity-30"
-        animate={{
-          scale: [1, 1.1, 1],
-        }}
-        transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
-      />
+      {!shouldReduceMotion && (
+        <motion.div
+          className="absolute top-1/2 -left-20 w-[500px] h-[500px] rounded-full pointer-events-none gradient-orb opacity-30"
+          style={{ willChange: "transform" }}
+          animate={{
+            scale: [1, 1.1, 1],
+          }}
+          transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
+        />
+      )}
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-4xl mx-auto">

@@ -1,19 +1,21 @@
 import TextReveal from "@/components/TextReveal";
 import { Button } from "@/components/ui/button";
 import { fadeUp, scaleIn, staggerContainer } from "@/lib/animations";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { ChevronDown, Github, Linkedin } from "lucide-react";
 
 const LINKEDIN_URL = "https://www.linkedin.com/in/valmirpaivastachin/";
 const GITHUB_URL = "https://github.com/valmirpst";
 
 const HeroSection = () => {
+  const shouldReduceMotion = useReducedMotion();
+
   return (
     <section
       id="hero"
       className="min-h-screen flex items-center relative overflow-hidden bg-background"
     >
-      {/* Background Grid Pattern */}
+      {/* Background Grid Pattern - Static, no will-change needed */}
       <div
         className="absolute inset-0 z-0 opacity-[0.03] pointer-events-none"
         style={{
@@ -22,25 +24,31 @@ const HeroSection = () => {
         }}
       />
 
-      {/* Animated gradient orbs */}
-      <motion.div
-        className="absolute top-1/4 -right-20 w-[600px] h-[600px] rounded-full pointer-events-none gradient-orb opacity-60"
-        animate={{
-          scale: [1, 1.1, 1],
-          x: [0, 30, 0],
-          y: [0, -30, 0],
-        }}
-        transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
-      />
+      {/* Animated gradient orbs - Performance critical */}
+      {!shouldReduceMotion && (
+        <>
+          <motion.div
+            className="absolute top-1/4 -right-20 w-[600px] h-[600px] rounded-full pointer-events-none gradient-orb opacity-60"
+            style={{ willChange: "transform" }}
+            animate={{
+              scale: [1, 1.1, 1],
+              x: [0, 30, 0],
+              y: [0, -30, 0],
+            }}
+            transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
+          />
 
-      <motion.div
-        className="absolute -bottom-20 -left-20 w-[400px] h-[400px] rounded-full pointer-events-none gradient-orb-secondary opacity-40"
-        animate={{
-          scale: [1, 1.2, 1],
-          rotate: [0, 90, 0],
-        }}
-        transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
-      />
+          <motion.div
+            className="absolute -bottom-20 -left-20 w-[400px] h-[400px] rounded-full pointer-events-none gradient-orb-secondary opacity-40"
+            style={{ willChange: "transform" }}
+            animate={{
+              scale: [1, 1.2, 1],
+              rotate: [0, 90, 0],
+            }}
+            transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
+          />
+        </>
+      )}
 
       <div className="container mx-auto px-4 relative z-10">
         <motion.div
@@ -92,13 +100,17 @@ const HeroSection = () => {
             Transformando ideias complexas em interfaces elegantes e escaláveis.
             Especializado em{" "}
             <span className="text-foreground font-normal">
-              React, Node.js e .NET
+              React, Next.js, TypeScript, .NET
             </span>
             , criando soluções de alto impacto que conectam tecnologia e
             pessoas.
           </motion.p>
 
-          <motion.div variants={scaleIn} className="flex flex-wrap gap-5">
+          <motion.div
+            variants={scaleIn}
+            className="flex flex-wrap gap-5"
+            style={{ willChange: "transform, opacity" }}
+          >
             <Button
               asChild
               size="lg"
@@ -133,7 +145,7 @@ const HeroSection = () => {
         transition={{ delay: 2, duration: 1 }}
       >
         <motion.div
-          animate={{ y: [0, 8, 0] }}
+          animate={shouldReduceMotion ? { opacity: 1 } : { y: [0, 8, 0] }}
           transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
         >
           <ChevronDown className="h-5 w-5 text-muted-foreground group-hover:text-primary transition-colors" />

@@ -1,6 +1,6 @@
 import { Separator } from "@/components/ui/separator";
 import { fadeUp, staggerContainer } from "@/lib/animations";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { BookOpen, GraduationCap } from "lucide-react";
 
 interface Education {
@@ -38,6 +38,8 @@ const educationItems: Education[] = [
 ];
 
 const EducationSection = () => {
+  const shouldReduceMotion = useReducedMotion();
+
   return (
     <motion.section
       id="formacao"
@@ -56,13 +58,16 @@ const EducationSection = () => {
         }}
       />
 
-      <motion.div
-        className="absolute top-1/2 left-1/4 w-[500px] h-[500px] rounded-full pointer-events-none gradient-orb opacity-10"
-        animate={{
-          scale: [1, 1.1, 1],
-        }}
-        transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
-      />
+      {!shouldReduceMotion && (
+        <motion.div
+          className="absolute top-1/2 left-1/4 w-[500px] h-[500px] rounded-full pointer-events-none gradient-orb"
+          style={{ willChange: "transform" }}
+          animate={{
+            scale: [1, 1.1, 1],
+          }}
+          transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
+        />
+      )}
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-4xl mx-auto mb-12">
@@ -83,6 +88,7 @@ const EducationSection = () => {
               key={item.title}
               variants={fadeUp}
               className="relative pl-12 pb-12 last:pb-0 group"
+              style={{ willChange: "transform, opacity" }}
             >
               {i < educationItems.length - 1 && (
                 <div className="absolute left-[19px] top-10 w-[2px] h-full bg-gradient-to-b from-primary/30 to-transparent" />
@@ -90,7 +96,8 @@ const EducationSection = () => {
 
               <motion.div
                 className="absolute left-0 top-0 w-10 h-10 rounded-xl bg-card border border-white/5 flex items-center justify-center group-hover:border-primary/50 group-hover:bg-primary/5 transition-all duration-500 shadow-xl"
-                whileHover={{ scale: 1.1, rotate: 5 }}
+                whileHover={shouldReduceMotion ? {} : { scale: 1.1, rotate: 5 }}
+                style={{ willChange: "transform" }}
               >
                 {item.status === "em andamento" ? (
                   <BookOpen className="h-5 w-5 text-primary" />

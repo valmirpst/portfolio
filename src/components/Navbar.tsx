@@ -1,5 +1,5 @@
 import { fadeDown, fadeUp, staggerContainerFast } from "@/lib/animations";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { useEffect, useState } from "react";
 
 const navItems = [
@@ -13,6 +13,7 @@ const navItems = [
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const shouldReduceMotion = useReducedMotion();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 50);
@@ -27,9 +28,10 @@ const Navbar = () => {
           ? "bg-background/90 backdrop-blur-md border-b border-border"
           : "bg-transparent"
       }`}
-      initial={{ y: -80 }}
+      initial={shouldReduceMotion ? { y: 0 } : { y: -80 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+      style={{ willChange: "transform" }}
     >
       <div className="container mx-auto flex items-center justify-between h-16 px-4">
         <motion.a

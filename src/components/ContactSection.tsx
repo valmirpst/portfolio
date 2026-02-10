@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { fadeUp, scaleIn, staggerContainer } from "@/lib/animations";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { Github, Linkedin, Mail } from "lucide-react";
 
 const LINKEDIN_URL = "https://www.linkedin.com/in/valmirpaivastachin/";
@@ -9,6 +9,8 @@ const GITHUB_URL = "https://github.com/valmirpst";
 const EMAIL = "valmirpaivacpm@gmail.com";
 
 const ContactSection = () => {
+  const shouldReduceMotion = useReducedMotion();
+
   return (
     <motion.section
       id="contato"
@@ -27,13 +29,16 @@ const ContactSection = () => {
         }}
       />
 
-      <motion.div
-        className="absolute top-0 right-0 w-[400px] h-[400px] rounded-full pointer-events-none gradient-orb opacity-10"
-        animate={{
-          scale: [1, 1.2, 1],
-        }}
-        transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
-      />
+      {!shouldReduceMotion && (
+        <motion.div
+          className="absolute top-0 right-0 w-[400px] h-[400px] rounded-full pointer-events-none gradient-orb opacity-70"
+          style={{ willChange: "transform" }}
+          animate={{
+            scale: [1, 1.2, 1],
+          }}
+          transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
+        />
+      )}
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-4xl mx-auto text-center">
@@ -59,6 +64,7 @@ const ContactSection = () => {
           <motion.div
             variants={scaleIn}
             className="flex flex-wrap justify-center gap-6"
+            style={{ willChange: "transform, opacity" }}
           >
             <Button
               asChild
@@ -116,27 +122,30 @@ const ContactSection = () => {
 
           <div className="flex items-center gap-6">
             <motion.a
-              whileHover={{ scale: 1.2, y: -2 }}
+              whileHover={shouldReduceMotion ? {} : { scale: 1.2, y: -2 }}
               href={LINKEDIN_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="text-muted-foreground hover:text-primary transition-colors"
+              style={{ willChange: "transform" }}
             >
               <Linkedin className="h-5 w-5" />
             </motion.a>
             <motion.a
-              whileHover={{ scale: 1.2, y: -2 }}
+              whileHover={shouldReduceMotion ? {} : { scale: 1.2, y: -2 }}
               href={GITHUB_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="text-muted-foreground hover:text-primary transition-colors"
+              style={{ willChange: "transform" }}
             >
               <Github className="h-5 w-5" />
             </motion.a>
             <motion.a
-              whileHover={{ scale: 1.2, y: -2 }}
+              whileHover={shouldReduceMotion ? {} : { scale: 1.2, y: -2 }}
               href={`mailto:${EMAIL}`}
               className="text-muted-foreground hover:text-primary transition-colors"
+              style={{ willChange: "transform" }}
             >
               <Mail className="h-5 w-5" />
             </motion.a>

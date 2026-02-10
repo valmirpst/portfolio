@@ -14,7 +14,7 @@ import {
   hoverScaleSmall,
   staggerContainer,
 } from "@/lib/animations";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { ExternalLink, Github } from "lucide-react";
 
 interface Project {
@@ -60,6 +60,8 @@ const projects: Project[] = [
 ];
 
 const ProjectsSection = () => {
+  const shouldReduceMotion = useReducedMotion();
+
   return (
     <motion.section
       id="projetos"
@@ -78,13 +80,16 @@ const ProjectsSection = () => {
         }}
       />
 
-      <motion.div
-        className="absolute -bottom-20 -right-20 w-[600px] h-[600px] rounded-full pointer-events-none gradient-orb opacity-20"
-        animate={{
-          scale: [1, 1.2, 1],
-        }}
-        transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
-      />
+      {!shouldReduceMotion && (
+        <motion.div
+          className="absolute -bottom-20 -right-20 w-[600px] h-[600px] rounded-full pointer-events-none gradient-orb opacity-40"
+          style={{ willChange: "transform" }}
+          animate={{
+            scale: [1, 1.2, 1],
+          }}
+          transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
+        />
+      )}
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-4xl mx-auto mb-12">
@@ -101,7 +106,12 @@ const ProjectsSection = () => {
 
         <div className="grid sm:grid-cols-2 gap-8 max-w-6xl mx-auto">
           {projects.map((project) => (
-            <motion.div key={project.title} variants={fadeUp} {...hoverScale}>
+            <motion.div
+              key={project.title}
+              variants={fadeUp}
+              {...hoverScale}
+              style={{ willChange: "transform, opacity" }}
+            >
               <Card className="bg-card/40 backdrop-blur-sm border-white/5 transition-all duration-500 group h-full hover:border-primary/20 overflow-hidden relative">
                 <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
@@ -112,7 +122,7 @@ const ProjectsSection = () => {
                       <ExternalLink className="h-4 w-4 text-primary" />
                     </div>
                   </CardTitle>
-                  <CardDescription className="text-muted-foreground leading-relaxed text-base font-light mt-2">
+                  <CardDescription className="text-muted-foreground leading-relaxed text-base font-light mt-2 text-balance">
                     {project.description}
                   </CardDescription>
                 </CardHeader>
