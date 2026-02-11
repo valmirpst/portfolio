@@ -7,6 +7,7 @@ import {
   useSpring,
 } from "framer-motion";
 import { useEffect, useState } from "react";
+import { HashLink } from "react-router-hash-link";
 
 const navItems = [
   { label: "Início", href: "#hero" },
@@ -52,19 +53,20 @@ const Navbar = () => {
         style={{ willChange: "transform" }}
       >
         <div className="container mx-auto flex items-center justify-between h-16 px-4">
-          <motion.a
-            href="#hero"
+          <motion.div
             className="font-mono text-sm font-medium text-primary"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <img
-              src={`${import.meta.env.BASE_URL}logo.png`}
-              alt="Logo"
-              width={32}
-              height={32}
-            />
-          </motion.a>
+            <HashLink smooth to="#hero" className="flex items-center gap-2">
+              <img
+                src={`${import.meta.env.BASE_URL}logo.png`}
+                alt="Logo"
+                width={32}
+                height={32}
+              />
+            </HashLink>
+          </motion.div>
 
           {/* Desktop */}
           <motion.ul
@@ -75,12 +77,13 @@ const Navbar = () => {
           >
             {navItems.map((item) => (
               <motion.li key={item.href} variants={fadeDown}>
-                <a
-                  href={item.href}
+                <HashLink
+                  smooth
+                  to={item.href}
                   className="text-sm text-muted-foreground hover:text-primary transition-colors"
                 >
                   {item.label}
-                </a>
+                </HashLink>
               </motion.li>
             ))}
           </motion.ul>
@@ -119,9 +122,8 @@ const Navbar = () => {
               transition={{ duration: 0.3 }}
             >
               {navItems.map((item, i) => (
-                <motion.a
+                <motion.div
                   key={item.href}
-                  href={item.href}
                   onClick={() => setMobileOpen(false)}
                   className="block py-2 text-sm text-muted-foreground hover:text-primary transition-colors"
                   variants={fadeUp}
@@ -129,8 +131,10 @@ const Navbar = () => {
                   animate="visible"
                   transition={{ delay: i * 0.05 }}
                 >
-                  {item.label}
-                </motion.a>
+                  <HashLink smooth to={item.href}>
+                    {item.label}
+                  </HashLink>
+                </motion.div>
               ))}
             </motion.div>
           )}
