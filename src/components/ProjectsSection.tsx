@@ -41,7 +41,7 @@ const projects: Project[] = [
       "Prisma",
     ],
     liveUrl: "https://barbearia-valmirpst.vercel.app",
-    repoUrl: "https://github.com/valmirpst/barbearia",
+    // repoUrl: "https://github.com/valmirpst/barbearia",
   },
   {
     title: "Projeto Integrador - Livraria Online",
