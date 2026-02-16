@@ -44,6 +44,21 @@ const projects: Project[] = [
     // repoUrl: "https://github.com/valmirpst/barbearia",
   },
   {
+    title: "Aplicativo de Gestão Financeira Pessoal",
+    description:
+      "Sistema completo de gestão financeira pessoal com controle de receitas, despesas, contas a pagar/receber, orçamentos e múltiplas contas bancárias. Permite que os usuários tenham uma visão clara de sua saúde financeira. ",
+    tech: [
+      "React",
+      "Vite",
+      "TypeScript",
+      "Tailwind CSS",
+      "Supabase",
+      "Agente de IA",
+    ],
+    liveUrl: "https://gestao-financeira-ai-one.vercel.app/preview",
+    repoUrl: "https://github.com/valmirpst/gestao-financeira-ai",
+  },
+  {
     title: "Projeto Integrador - Livraria Online",
     description:
       "Projeto integrador full stack de uma livraria online, com autenticação e gerenciamento de estoque, desenvolvido no 4º ano do Curso Técnico Integrado em Informática da UTFPR.",
@@ -56,21 +71,6 @@ const projects: Project[] = [
       "PostgreSQL",
     ],
     repoUrl: "https://github.com/valmirpst/projeto-integrador",
-  },
-  {
-    title: "Painel Escolar - Projeto Desenvolvimento Web",
-    description:
-      "Painel escolar para gerenciamento de alunos, notas e atividades, desenvolvido como projeto final do curso de Desenvolvimento Web, utilizando React, Next.js e Recharts para visualização de dados.",
-    tech: [
-      "React",
-      "Next.js",
-      "TypeScript",
-      "CSS Modules",
-      "Lucide Icons",
-      "Recharts",
-    ],
-    liveUrl: "https://dw-project-valmirpst.vercel.app",
-    repoUrl: "https://github.com/valmirpst/dw-project-front",
   },
   {
     title: "Portfolio Pessoal (Este Site)",
