@@ -42,10 +42,7 @@ const ContactSection = () => {
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-4xl mx-auto text-center">
-          <motion.h2
-            variants={fadeUp}
-            className="text-4xl md:text-6xl font-bold mb-4 tracking-tighter"
-          >
+          <motion.h2 variants={fadeUp} className="text-4xl md:text-6xl font-bold mb-4 tracking-tighter">
             Vamos <span className="text-gradient">Conversar</span>
           </motion.h2>
           <motion.div variants={fadeUp}>
@@ -56,9 +53,8 @@ const ContactSection = () => {
             variants={fadeUp}
             className="text-xl text-muted-foreground max-w-2xl mx-auto mb-12 leading-relaxed font-light"
           >
-            Estou sempre aberto a novas oportunidades, colaborações e projetos
-            desafiadores. Sinta-se à vontade para entrar em contato através de
-            qualquer uma das plataformas abaixo!
+            Estou sempre aberto a novas oportunidades, colaborações e projetos desafiadores. Sinta-se à vontade para
+            entrar em contato através de qualquer uma das plataformas abaixo!
           </motion.p>
 
           <motion.div
@@ -71,7 +67,7 @@ const ContactSection = () => {
               size="lg"
               className="glow rounded-full px-8 h-12 text-base font-semibold group transition-all hover:scale-105"
             >
-              <a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer">
+              <a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
                 <Linkedin className="mr-2 h-5 w-5 transition-transform group-hover:rotate-6 duration-300" />
                 LinkedIn
               </a>
@@ -83,7 +79,7 @@ const ContactSection = () => {
               asChild
               className="rounded-full px-8 h-12 text-base font-semibold border-white/10 hover:bg-gray-800 hover:text-white transition-all hover:scale-105 group"
             >
-              <a href={GITHUB_URL} target="_blank" rel="noopener noreferrer">
+              <a href={GITHUB_URL} target="_blank" rel="noopener noreferrer" aria-label="GitHub">
                 <Github className="mr-2 h-5 w-5 transition-transform group-hover:rotate-6 duration-300" />
                 GitHub
               </a>
@@ -95,7 +91,7 @@ const ContactSection = () => {
               asChild
               className="rounded-full px-8 h-12 text-base font-semibold border-white/10 hover:bg-gray-800 hover:text-white transition-all hover:scale-105 group"
             >
-              <a href={`mailto:${EMAIL}`}>
+              <a href={`mailto:${EMAIL}`} aria-label="Email">
                 <Mail className="mr-2 h-5 w-5 transition-transform group-hover:rotate-6 duration-300" />
                 Email
               </a>
@@ -114,10 +110,7 @@ const ContactSection = () => {
             <p className="font-mono text-[10px] text-center uppercase tracking-[0.2em] text-primary mb-2">
               Developed with excellence
             </p>
-            <p className="font-light">
-              © {new Date().getFullYear()} Valmir Paiva Stachin. All rights
-              reserved.
-            </p>
+            <p className="font-light">© {new Date().getFullYear()} Valmir Paiva Stachin. All rights reserved.</p>
           </div>
 
           <div className="flex items-center gap-6">
@@ -128,6 +121,7 @@ const ContactSection = () => {
               rel="noopener noreferrer"
               className="text-muted-foreground hover:text-primary transition-colors"
               style={{ willChange: "transform" }}
+              aria-label="LinkedIn"
             >
               <Linkedin className="h-5 w-5" />
             </motion.a>
@@ -138,6 +132,7 @@ const ContactSection = () => {
               rel="noopener noreferrer"
               className="text-muted-foreground hover:text-primary transition-colors"
               style={{ willChange: "transform" }}
+              aria-label="GitHub"
             >
               <Github className="h-5 w-5" />
             </motion.a>
@@ -146,6 +141,7 @@ const ContactSection = () => {
               href={`mailto:${EMAIL}`}
               className="text-muted-foreground hover:text-primary transition-colors"
               style={{ willChange: "transform" }}
+              aria-label="Email"
             >
               <Mail className="h-5 w-5" />
             </motion.a>

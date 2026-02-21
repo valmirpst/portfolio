@@ -1,19 +1,8 @@
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
-import {
-  fadeUp,
-  hoverScale,
-  hoverScaleSmall,
-  staggerContainer,
-} from "@/lib/animations";
+import { fadeUp, hoverScale, hoverScaleSmall, staggerContainer } from "@/lib/animations";
 import { motion, useReducedMotion } from "framer-motion";
 import { ExternalLink, Github } from "lucide-react";
 
@@ -30,16 +19,7 @@ const projects: Project[] = [
     title: "Sistema de Gestão para Barbearias",
     description:
       "Sistema completo de gestão para barbearias, permitindo que proprietários gerenciem seus estabelecimentos, serviços e agendamentos, enquanto clientes podem visualizar e agendar serviços de forma fácil e intuitiva.",
-    tech: [
-      "Next.js",
-      "TypeScript",
-      "Radix UI",
-      "Node.js",
-      "Fastify",
-      "PostgreSQL",
-      "NeonDB",
-      "Prisma",
-    ],
+    tech: ["Next.js", "TypeScript", "Radix UI", "Node.js", "Fastify", "PostgreSQL", "NeonDB", "Prisma"],
     liveUrl: "https://barbearia-valmirpst.vercel.app",
     // repoUrl: "https://github.com/valmirpst/barbearia",
   },
@@ -47,14 +27,7 @@ const projects: Project[] = [
     title: "Aplicativo de Gestão Financeira Pessoal",
     description:
       "Sistema completo de gestão financeira pessoal com controle de receitas, despesas, contas a pagar/receber, orçamentos e múltiplas contas bancárias. Permite que os usuários tenham uma visão clara de sua saúde financeira. ",
-    tech: [
-      "React",
-      "Vite",
-      "TypeScript",
-      "Tailwind CSS",
-      "Supabase",
-      "Agente de IA",
-    ],
+    tech: ["React", "Vite", "TypeScript", "Tailwind CSS", "Supabase", "Agente de IA"],
     liveUrl: "https://gestao-financeira-ai-one.vercel.app/preview",
     repoUrl: "https://github.com/valmirpst/gestao-financeira-ai",
   },
@@ -62,28 +35,14 @@ const projects: Project[] = [
     title: "Projeto Integrador - Livraria Online",
     description:
       "Projeto integrador full stack de uma livraria online, com autenticação e gerenciamento de estoque, desenvolvido no 4º ano do Curso Técnico Integrado em Informática da UTFPR.",
-    tech: [
-      "React",
-      "TypeScript",
-      "Next.js",
-      "Node.js",
-      "Express",
-      "PostgreSQL",
-    ],
+    tech: ["React", "TypeScript", "Next.js", "Node.js", "Express", "PostgreSQL"],
     repoUrl: "https://github.com/valmirpst/projeto-integrador",
   },
   {
     title: "Portfolio Pessoal (Este Site)",
     description:
       "Portfólio pessoal moderno e interativo para apresentação de projetos, habilidades e experiências, desenvolvido com apoio de agentes de IA para otimizar o design e o desenvolvimento.",
-    tech: [
-      "React",
-      "TypeScript",
-      "Tailwind CSS",
-      "Antigravity",
-      "Agente de IA",
-      "Framer Motion",
-    ],
+    tech: ["React", "TypeScript", "Tailwind CSS", "Antigravity", "Agente de IA", "Framer Motion"],
     repoUrl: "https://github.com/valmirpst/portfolio",
   },
 ];
@@ -122,10 +81,7 @@ const ProjectsSection = () => {
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-4xl mx-auto mb-12">
-          <motion.h2
-            variants={fadeUp}
-            className="text-4xl md:text-5xl font-bold mb-4 tracking-tight"
-          >
+          <motion.h2 variants={fadeUp} className="text-4xl md:text-5xl font-bold mb-4 tracking-tight">
             Projetos em <span className="text-gradient">Destaque</span>
           </motion.h2>
           <motion.div variants={fadeUp}>
@@ -152,6 +108,7 @@ const ProjectsSection = () => {
                       href={project.liveUrl || project.repoUrl}
                       target="_blank"
                       rel="noopener noreferrer"
+                      aria-label={`Ver ${project.liveUrl ? "demo" : "código"} de ${project.title}`}
                     >
                       <ExternalLink className="h-4 w-4 text-primary" />
                     </a>
@@ -185,6 +142,7 @@ const ProjectsSection = () => {
                           href={project.liveUrl}
                           target="_blank"
                           rel="noopener noreferrer"
+                          aria-label={`Ver demo de ${project.title}`}
                         >
                           <ExternalLink className="mr-2 h-3.5 w-3.5" />
                           Demo
@@ -198,11 +156,7 @@ const ProjectsSection = () => {
                         asChild
                         className="rounded-full px-6 h-9 text-xs font-semibold border-white/10 hover:bg-gray-800 hover:text-white opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0 delay-75"
                       >
-                        <a
-                          href={project.repoUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
+                        <a href={project.repoUrl} target="_blank" rel="noopener noreferrer">
                           <Github className="mr-2 h-3.5 w-3.5" />
                           Código
                         </a>

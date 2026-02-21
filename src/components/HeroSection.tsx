@@ -11,10 +11,7 @@ const HeroSection = () => {
   const shouldReduceMotion = useReducedMotion();
 
   return (
-    <section
-      id="hero"
-      className="min-h-screen flex items-center relative overflow-hidden bg-background"
-    >
+    <section id="hero" className="min-h-screen flex items-center relative overflow-hidden bg-background">
       {/* Background Grid Pattern - Pulsating and Animated */}
       <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
         <div
@@ -54,12 +51,7 @@ const HeroSection = () => {
       )}
 
       <div className="container mx-auto px-4 relative z-10">
-        <motion.div
-          className="max-w-4xl"
-          variants={staggerContainer}
-          initial="hidden"
-          animate="visible"
-        >
+        <motion.div className="max-w-4xl" variants={staggerContainer} initial="hidden" animate="visible">
           {/* Availability Badge */}
           <motion.div
             variants={fadeUp}
@@ -72,48 +64,29 @@ const HeroSection = () => {
             Disponível para novos projetos
           </motion.div>
 
-          <motion.p
-            variants={fadeUp}
-            className="font-mono text-sm text-primary/80 mb-4 tracking-wider uppercase"
-          >
+          <motion.p variants={fadeUp} className="font-mono text-sm text-primary/80 mb-4 tracking-wider uppercase">
             Olá, eu sou
           </motion.p>
 
           <h1 className="text-5xl sm:text-6xl md:text-8xl font-bold tracking-tighter mb-4 leading-[1.1]">
-            <TextReveal
-              text="Valmir Paiva Stachin"
-              highlightText="Stachin"
-              delay={0.2}
-            />
+            <TextReveal text="Valmir Paiva Stachin" highlightText="Stachin" delay={0.2} />
           </h1>
 
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-medium mb-8 flex items-center gap-3">
             <span className="text-muted-foreground/60 font-light">—</span>
-            <TextReveal
-              text="Full Stack Developer"
-              className="text-muted-foreground"
-              delay={0.6}
-            />
+            <TextReveal text="Full Stack Developer" className="text-muted-foreground" delay={0.6} />
           </h2>
 
           <motion.p
             variants={fadeUp}
             className="text-lg text-muted-foreground max-w-2xl mb-10 leading-relaxed font-light"
           >
-            Transformando ideias complexas em interfaces elegantes e escaláveis.
-            Especializado em{" "}
-            <span className="text-foreground font-normal">
-              React, Next.js, TypeScript, .NET
-            </span>
-            , criando soluções de alto impacto que conectam tecnologia e
-            pessoas.
+            Transformando ideias complexas em interfaces elegantes e escaláveis. Especializado em{" "}
+            <span className="text-foreground font-normal">React, Next.js, TypeScript, .NET</span>, criando soluções de
+            alto impacto que conectam tecnologia e pessoas.
           </motion.p>
 
-          <motion.div
-            variants={scaleIn}
-            className="flex flex-wrap gap-5"
-            style={{ willChange: "transform, opacity" }}
-          >
+          <motion.div variants={scaleIn} className="flex flex-wrap gap-5" style={{ willChange: "transform, opacity" }}>
             <Button
               asChild
               size="lg"
@@ -146,6 +119,7 @@ const HeroSection = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 2, duration: 1 }}
+        aria-label="Ir para a seção sobre"
       >
         <motion.div
           animate={shouldReduceMotion ? { opacity: 1 } : { y: [0, 8, 0] }}
