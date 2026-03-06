@@ -1,4 +1,4 @@
-# Portfolio 🎨
+# Portfólio 🎨
 
 Portfólio pessoal desenvolvido para apresentar projetos, experiências e formas de contato de maneira clara e envolvente.
 

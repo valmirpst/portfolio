@@ -39,11 +39,11 @@ const projects: Project[] = [
     repoUrl: "https://github.com/valmirpst/projeto-integrador",
   },
   {
-    title: "Portfolio Pessoal (Este Site)",
+    title: "Portfólio Pessoal (Este Site)",
     description:
       "Portfólio pessoal moderno e interativo para apresentação de projetos, habilidades e experiências, desenvolvido com apoio de agentes de IA para otimizar o design e o desenvolvimento.",
     tech: ["React", "TypeScript", "Tailwind CSS", "Antigravity", "Agente de IA", "Framer Motion"],
-    repoUrl: "https://github.com/valmirpst/portfolio",
+    repoUrl: "https://github.com/valmirpst/valmirpst.github.io",
   },
 ];
 

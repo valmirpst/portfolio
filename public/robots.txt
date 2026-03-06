@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://valmirpst.github.io/portfolio/sitemap.xml
+Sitemap: https://valmirpst.github.io/sitemap.xml
