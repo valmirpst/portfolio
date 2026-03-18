@@ -91,21 +91,23 @@ const Navbar = () => {
           {/* Mobile toggle */}
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="md:hidden text-foreground p-2"
+            className="md:hidden text-foreground p-2 flex items-center justify-center rounded-md hover:bg-accent/50"
             aria-label="Menu"
           >
             <svg
-              width="20"
-              height="20"
-              viewBox="0 0 20 20"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
               strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             >
               {mobileOpen ? (
-                <path d="M4 4l12 12M16 4L4 16" />
+                <path d="M18 6L6 18M6 6l12 12" />
               ) : (
-                <path d="M3 6h14M3 10h14M3 14h14" />
+                <path d="M4 6h16M4 12h16M4 18h16" />
               )}
             </svg>
           </button>
@@ -115,27 +117,32 @@ const Navbar = () => {
         <AnimatePresence>
           {mobileOpen && (
             <motion.div
-              className="md:hidden bg-background/95 backdrop-blur-md border-b border-border px-4 pb-4"
+              className="md:hidden bg-background/95 backdrop-blur-md border-b border-border px-2 pb-4 pt-2 shadow-lg overflow-hidden"
               initial={{ height: 0, opacity: 0 }}
               animate={{ height: "auto", opacity: 1 }}
               exit={{ height: 0, opacity: 0 }}
               transition={{ duration: 0.3 }}
             >
-              {navItems.map((item, i) => (
-                <motion.div
-                  key={item.href}
-                  onClick={() => setMobileOpen(false)}
-                  className="block py-2 text-sm text-muted-foreground hover:text-primary transition-colors"
-                  variants={fadeUp}
-                  initial="hidden"
-                  animate="visible"
-                  transition={{ delay: i * 0.05 }}
-                >
-                  <HashLink smooth to={item.href}>
-                    {item.label}
-                  </HashLink>
-                </motion.div>
-              ))}
+              <div className="flex flex-col gap-1">
+                {navItems.map((item, i) => (
+                  <motion.div
+                    key={item.href}
+                    variants={fadeUp}
+                    initial="hidden"
+                    animate="visible"
+                    transition={{ delay: i * 0.05 }}
+                  >
+                    <HashLink
+                      smooth
+                      to={item.href}
+                      onClick={() => setMobileOpen(false)}
+                      className="block w-full py-3 px-4 text-lg font-medium text-muted-foreground hover:text-primary hover:bg-muted/50 rounded-lg transition-colors"
+                    >
+                      {item.label}
+                    </HashLink>
+                  </motion.div>
+                ))}
+              </div>
             </motion.div>
           )}
         </AnimatePresence>
